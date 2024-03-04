@@ -1,6 +1,8 @@
 import { useState } from "react";
 import articles from "../../data/articles.json";
 import Controls from "../Controls/Controls.jsx";
+import Progress from "../Progress/Progress.jsx";
+import ArticleView from "../ArticleView/ArticleView";
 
 const App = () => {
   const [selectedIdx, setSelectedIdx] = useState(0);
@@ -29,13 +31,8 @@ const App = () => {
         onPrev={handlePrev}
         onNext={handleNext}
       />
-      <p>
-        {current}/{total}
-      </p>
-      <article>
-        <h1>{visibleArticle.topic}</h1>
-        <p>{visibleArticle.text}</p>
-      </article>
+      <Progress current={current} total={total} />
+      <ArticleView topic={visibleArticle.topic} text={visibleArticle.text} />
     </div>
   );
 };
